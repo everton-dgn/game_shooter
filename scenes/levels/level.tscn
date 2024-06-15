@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://dy1npxh34w1iv"]
+
+[ext_resource type="Script" path="res://scenes/levels/level.gd" id="1_0c7c8"]
+[ext_resource type="Texture2D" uid="uid://c57gkbafwspi0" path="res://graphics/ground/stones.png" id="2_4xon6"]
+[ext_resource type="PackedScene" uid="uid://c68hekvdr4nls" path="res://scenes/objects/gate.tscn" id="2_f82kk"]
+[ext_resource type="Texture2D" uid="uid://btxnottno6vbi" path="res://graphics/decals/dirt_patch.png" id="3_gk3fj"]
+[ext_resource type="PackedScene" uid="uid://fj3ijajhbm6q" path="res://scenes/player/player.tscn" id="4_t7rur"]
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_0c7c8")
+
+[node name="Ground" type="Node2D" parent="."]
+
+[node name="Soil" type="Sprite2D" parent="Ground"]
+modulate = Color(0.815686, 0.760784, 0.811765, 1)
+texture_repeat = 3
+position = Vector2(671, 740)
+texture = ExtResource("2_4xon6")
+region_enabled = true
+region_rect = Rect2(-1250.85, -600.284, 4528.44, 2642.09)
+
+[node name="Decoration" type="Sprite2D" parent="Ground"]
+modulate = Color(1, 0.921569, 0.6, 0.803922)
+position = Vector2(-702, 1268)
+texture = ExtResource("3_gk3fj")
+
+[node name="Gate" parent="." instance=ExtResource("2_f82kk")]
+
+[node name="Player" parent="." instance=ExtResource("4_t7rur")]
+position = Vector2(669, 524)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(0.6, 0.6)
+position_smoothing_enabled = true
+
+[node name="Projectiles" type="Node2D" parent="."]
+
+[connection signal="player_entered_gate" from="Gate" to="." method="_on_gate_player_entered_gate"]
+[connection signal="player_exited_gate" from="Gate" to="." method="_on_gate_player_exited_gate"]
+[connection signal="granade_fired" from="Player" to="." method="_on_player_granade_fired"]
+[connection signal="laser_fired" from="Player" to="." method="_on_player_laser_fired"]

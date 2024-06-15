@@ -1,0 +1,26 @@
+{
+	"disabled_build_options": {
+		"disable_3d": true,
+		"disable_3d_physics": true
+	},
+	"disabled_classes": [
+		"CollisionObject3D",
+		"CollisionPolygon3D",
+		"CollisionShape3D",
+		"ImporterMeshInstance3D",
+		"Joint3D",
+		"Marker3D",
+		"NavigationLink3D",
+		"NavigationObstacle3D",
+		"NavigationRegion3D",
+		"Node3D",
+		"Occluder3D",
+		"OccluderInstance3D",
+		"Path3D",
+		"Shape3D",
+		"Texture3D",
+		"VisualShaderNodeSample3D",
+		"World3D"
+	],
+	"type": "build_profile"
+}
