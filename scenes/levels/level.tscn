@@ -122,5 +122,5 @@ position_smoothing_enabled = true
 
 [connection signal="player_entered_gate" from="Gate" to="." method="_on_gate_player_entered_gate"]
 [connection signal="player_exited_gate" from="Gate" to="." method="_on_gate_player_exited_gate"]
-[connection signal="granade_fired" from="Player" to="." method="_on_player_granade_fired"]
+[connection signal="grenade_fired" from="Player" to="." method="_on_player_grenade_fired"]
 [connection signal="laser_fired" from="Player" to="." method="_on_player_laser_fired"]
