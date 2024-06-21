@@ -27,6 +27,10 @@ window/stretch/mode="canvas_items"
 
 import/blender/enabled=false
 
+[gui]
+
+theme/default_font_hinting=2
+
 [input]
 
 Left={
