@@ -1,4 +1,4 @@
 extends RigidBody2D
 
 
-const speed = 750
+const speed := 750

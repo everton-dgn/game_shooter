@@ -5,8 +5,8 @@ signal laser_fired(pos, direction)
 signal grenade_fired(pos, direction)
 
 
-var can_laser: bool = true
-var can_grenade: bool = true
+var can_laser := true
+var can_grenade := true
 
 
 func _process(_delta):
@@ -20,8 +20,8 @@ func _process(_delta):
 
 	if Input.is_action_pressed('Primary Action') and can_laser:
 		$GPUParticles2D.emitting = true
-		var laser_markers = $LaserStartPositions.get_children()
-		var selected_laser = laser_markers[randi() % laser_markers.size()]
+		var laser_markers := $LaserStartPositions.get_children()
+		var selected_laser := laser_markers[randi() % laser_markers.size()]
 		can_laser = false
 		$LaserReloadTimer.start()
 		laser_fired.emit(selected_laser.global_position, player_direction)
@@ -33,9 +33,9 @@ func _process(_delta):
 		grenade_fired.emit(pos, player_direction)
 
 
-func _on_laser_reload_timer_timeout():
+func _on_laser_reload_timer_timeout() -> void:
 	can_laser = true
 
 
-func _on_grenade_reload_timer_timeout():
+func _on_grenade_reload_timer_timeout() -> void:
 	can_grenade = true
