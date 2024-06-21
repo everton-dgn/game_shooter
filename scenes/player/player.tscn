@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://fj3ijajhbm6q"]
+[gd_scene load_steps=10 format=3 uid="uid://fj3ijajhbm6q"]
 
 [ext_resource type="Texture2D" uid="uid://c52sq8gnyfqo4" path="res://graphics/player/player.png" id="1_ftmv8"]
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_s07bi"]
@@ -12,7 +12,7 @@ script/source = "extends CollisionShape2D
 
 
 func _ready():
-	pass 
+	pass
 
 
 func _process(_delta):
@@ -35,6 +35,9 @@ scale_min = 0.1
 scale_max = 0.4
 color = Color(0.105882, 0.756863, 1, 0.807843)
 color_ramp = SubResource("GradientTexture1D_ptrp1")
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_xee4g"]
+polygon = PackedVector2Array(-73, -87, -79, -84, -83, -81, -86, -77, -88, -74, -89, -70, -93, -64, -96, -58, -96, -49, -96, -40, -94, -31, -90, -25, -87, -23, -86, -21, -88, -18, -87, -12, -83, -8, -78, -4, -77, 1, -74, 6, -71, 11, -70, 15, -64, 20, -58, 22, -47, 23, -41, 22, -30, 20, -23, 16, -15, 12, -6, 8, 2, 6, 7, 3, 21, 3, 25, 3, 22, 7, 22, 11, 24, 14, 30, 15, 52, 15, 59, 15, 61, 12, 61, 9, 61, 6, 65, 6, 69, 3, 73, -1, 75, -2, 79, 0, 86, 0, 88, -2, 88, -5, 93, -4, 96, -6, 99, -15, 99, -23, 97, -29, 94, -32, 91, -33, 89, -36, 84, -37, 78, -38, 74, -42, 68, -43, 62, -43, 55, -49, 51, -50, 47, -50, 45, -49, 42, -50, 37, -55, 31, -61, 25, -65, 21, -68, 14, -69, 11, -76, 10, -80, 2, -87, 0, -89, -5, -96, -9, -99, -15, -101, -19, -100, -24, -99, -31, -99, -39, -98, -43, -96, -45, -95, -49, -96, -55, -95, -60, -92, -62, -90, -63, -88, -65, -86, -70, -87)
 
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(36, 39)
@@ -77,6 +80,9 @@ process_material = SubResource("ParticleProcessMaterial_c2tel")
 texture = ExtResource("3_lnyv6")
 lifetime = 0.2
 one_shot = true
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_xee4g")
 
 [connection signal="timeout" from="LaserReloadTimer" to="." method="_on_laser_reload_timer_timeout"]
 [connection signal="timeout" from="GrenadeReloadTimer" to="." method="_on_grenade_reload_timer_timeout"]

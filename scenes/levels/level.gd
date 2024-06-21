@@ -20,12 +20,11 @@ func _on_player_laser_fired(pos, direction):
 	laser.position = pos
 	laser.rotation_degrees = rad_to_deg(direction.angle()) + 90
 	laser.direction = direction
-	$Projectiles.add_child(laser)
+	$Projectiles.call_deferred('add_child', laser)
 
 
 func _on_player_grenade_fired(pos, direction):
 	var grenade: RigidBody2D = grenade_scene.instantiate()
 	grenade.position = pos
 	grenade.linear_velocity = direction * grenade.speed
-	$Projectiles.add_child(grenade)
-
+	$Projectiles.call_deferred('add_child', grenade)
