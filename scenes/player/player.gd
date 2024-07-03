@@ -9,9 +9,13 @@ var can_laser := true
 var can_grenade := true
 
 
+@export var max_speed: int = 500
+var speed: int = max_speed
+
+
 func _process(_delta):
 	var direction := Input.get_vector('Left', 'Right', 'Up', 'Down')
-	velocity = direction * 500
+	velocity = direction * speed
 	move_and_slide()
 
 	look_at(get_global_mouse_position())
